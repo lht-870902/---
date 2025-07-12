@@ -7,6 +7,7 @@ function calculateTax() {
   const amountInput = document.getElementById("amount");
   const feeInput = document.getElementById("fee");
   const resultDiv = document.getElementById("result");
+  const exportBtn = document.getElementById("exportBtn"); // 匯出按鈕
 
   let amount = Number(amountInput.value);
   let fee = Number(feeInput.value);
@@ -14,11 +15,13 @@ function calculateTax() {
   if (amount < 0 || isNaN(amount)) {
     resultDiv.textContent = "請輸入有效的發票金額";
     resultDiv.classList.add("show");
+    exportBtn.style.display = "none"; // 隱藏匯出按鈕
     return;
   }
   if (fee < 0 || isNaN(fee)) {
     resultDiv.textContent = "請輸入有效的手續費金額";
     resultDiv.classList.add("show");
+    exportBtn.style.display = "none"; // 隱藏匯出按鈕
     return;
   }
 
@@ -47,4 +50,11 @@ function calculateTax() {
     請款人實領金額：${formatNumber(netAmount)}
   `;
   resultDiv.classList.add("show");
+
+  // 顯示或隱藏匯出按鈕
+  if (taxType === "fb" || taxType === "foreign") {
+    exportBtn.style.display = "block";
+  } else {
+    exportBtn.style.display = "none";
+  }
 }
