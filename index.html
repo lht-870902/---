@@ -33,7 +33,12 @@
     <button onclick="calculateTax()">計算稅額</button>
 
     <div id="result"></div>
-    
+
+    <!-- 匯出按鈕放在計算結果下方 -->
+    <button id="exportBtn" type="button" onclick="exportExcel()" style="display:none;">
+      匯出付款單 Excel
+    </button>
+
     <div class="tax-description">
       <h3>稅別說明</h3>
       <div class="tax-info-grid">
@@ -60,7 +65,10 @@
       </div>
     </div>
   </div>
-  
+
+  <!-- 載入外部 JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="excel-template.js"></script>
   <script src="calculator.js"></script>
 </body>
 </html>
